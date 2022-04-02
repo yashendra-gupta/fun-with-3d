@@ -1,6 +1,7 @@
 import * as BABYLON from '@babylonjs/core/Legacy/legacy';
 import "@babylonjs/loaders/glTF";
 import { TerrainMaterial } from '@babylonjs/materials/terrain';
+import { environment } from './../../environments/environment';
 
 export class App {
     private _canvas: HTMLCanvasElement;
@@ -64,7 +65,7 @@ export class App {
         skyboxMaterial.disableLighting = true;
         skybox.material = skyboxMaterial;
         skybox.infiniteDistance = true;
-        skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("./assets/3d/envs/skyboxes/green-mountains/", this._scene);
+        skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture(environment.assetsUrl.threeD.envs.skyboxes.greenMountains, this._scene);
         skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
         skybox.renderingGroupId = 0;
     }
