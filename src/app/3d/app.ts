@@ -42,17 +42,17 @@ export class App {
         var terrainMaterial = new TerrainMaterial("terrainMaterial", this._scene);
         terrainMaterial.specularColor = new BABYLON.Color3(0.5, 0.5, 0.5);
         terrainMaterial.specularPower = 64;
-        terrainMaterial.mixTexture = new BABYLON.Texture("/assets/3d/envs/terrains/green-ground-with-pathways/stencil.png", this._scene);
-        terrainMaterial.diffuseTexture1 = new BABYLON.Texture("/assets/3d/envs/terrains/green-ground-with-pathways/grass.png", this._scene);
-        terrainMaterial.diffuseTexture2 = new BABYLON.Texture("/assets/3d/envs/terrains/green-ground-with-pathways/pathway-sand.png", this._scene);
-        terrainMaterial.diffuseTexture3 = new BABYLON.Texture("/assets/3d/envs/terrains/green-ground-with-pathways/grass-pathway-sand-overlap.png", this._scene);
+        terrainMaterial.mixTexture = new BABYLON.Texture("./assets/3d/envs/terrains/green-ground-with-pathways/stencil.png", this._scene);
+        terrainMaterial.diffuseTexture1 = new BABYLON.Texture("./assets/3d/envs/terrains/green-ground-with-pathways/grass.png", this._scene);
+        terrainMaterial.diffuseTexture2 = new BABYLON.Texture("./assets/3d/envs/terrains/green-ground-with-pathways/pathway-sand.png", this._scene);
+        terrainMaterial.diffuseTexture3 = new BABYLON.Texture("./assets/3d/envs/terrains/green-ground-with-pathways/grass-pathway-sand-overlap.png", this._scene);
         terrainMaterial.diffuseTexture1.uScale = terrainMaterial.diffuseTexture1.vScale = 10;
         terrainMaterial.diffuseTexture2.uScale = terrainMaterial.diffuseTexture2.vScale = 10;
         terrainMaterial.diffuseTexture3.uScale = terrainMaterial.diffuseTexture3.vScale = 10;
 
         ground.material = terrainMaterial;
 
-        BABYLON.SceneLoader.ImportMeshAsync("", "/assets/3d/models/", "my-tree.glb").then((myTree) => {
+        BABYLON.SceneLoader.ImportMeshAsync("", "./assets/3d/models/", "my-tree.glb").then((myTree) => {
             myTree.meshes.forEach((mesh) => mesh.renderingGroupId = 1);
             myTree.meshes[0].scaling = new BABYLON.Vector3(30, 30, 30);
         });
@@ -64,7 +64,7 @@ export class App {
         skyboxMaterial.disableLighting = true;
         skybox.material = skyboxMaterial;
         skybox.infiniteDistance = true;
-        skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("/assets/3d/envs/skyboxes/green-mountains/", this._scene);
+        skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("./assets/3d/envs/skyboxes/green-mountains/", this._scene);
         skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
         skybox.renderingGroupId = 0;
     }
