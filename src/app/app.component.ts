@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { App } from './3d/app';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fun-with-3d';
+  
+  ngAfterViewInit(): void {
+    const app3d = new App('renderCanvas');
+    app3d.run();
+  }
 }
