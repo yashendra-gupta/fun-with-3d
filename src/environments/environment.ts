@@ -3,16 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  "assetsUrl": {
-    "threeD": {
-      "envs": {
-        "skyboxes": {
-          "greenMountains": "./assets/3d/envs/skyboxes/green-mountains/"
-        }
-      }
-    }
-  }
+  production: false
 };
 
 /*
