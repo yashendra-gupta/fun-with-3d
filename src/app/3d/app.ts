@@ -13,8 +13,8 @@ export class App {
         this._canvas = document.getElementById(canvasElement) as HTMLCanvasElement;
         this._engine = new BABYLON.Engine(this._canvas, true);
         this._scene = new BABYLON.Scene(this._engine);
-        this._camera = new BABYLON.UniversalCamera('UniversalCamera', new BABYLON.Vector3(200, 150, -600), this._scene);
-        this._light = new BABYLON.DirectionalLight('DirectionalLight', new BABYLON.Vector3(0, -1, 0), this._scene);
+        this._camera = new BABYLON.UniversalCamera('UniversalCamera', new BABYLON.Vector3(10, 0, -250), this._scene);
+        this._light = new BABYLON.HemisphericLight('HemisphericLight', new BABYLON.Vector3(1, 1, 0), this._scene);
     }
 
     run() {
@@ -27,7 +27,7 @@ export class App {
     private createScene(): void {
         this._scene.clearColor = new BABYLON.Color4(0.92, 0.96, 0.97);
 
-        this._camera.setTarget(new BABYLON.Vector3(0, 250, 0));
+        this._camera.setTarget(new BABYLON.Vector3(0, 0, 0));
         this._camera.speed = 5;
         this._camera.attachControl(this._canvas, false);
 
@@ -50,8 +50,15 @@ export class App {
 
         ground.material = terrainMaterial;
 
-        BABYLON.SceneLoader.ImportMeshAsync('', 'https://raw.githubusercontent.com/yashendra-gupta/public/master/assets/3d/models/low-poly/character/basic/', 'basic-animated.glb').then((myTree) => {
-            myTree.meshes.forEach((mesh) => mesh.renderingGroupId = 1);
+        BABYLON.SceneLoader.ImportMeshAsync('', 'https://raw.githubusercontent.com/yashendra-gupta/public/master/assets/3d/models/low-poly/character/basic/', 'basic-animated.glb').then((character) => {
+            character.meshes.forEach((mesh) => mesh.renderingGroupId = 1);
+            const roll = 0;
+            const yaw = 0;
+            const pitch = 0;
+            character.meshes[0].rotate(BABYLON.Axis.Y, roll, BABYLON.Space.LOCAL);
+            character.meshes[0].rotate(BABYLON.Axis.X, pitch, BABYLON.Space.LOCAL);
+            character.meshes[0].rotate(BABYLON.Axis.Z, roll, BABYLON.Space.LOCAL);
+            character.meshes[0].rotation = new BABYLON.Vector3(pitch, yaw, roll);
         });
 
         var skybox = BABYLON.Mesh.CreateBox("skyBox", 100, this._scene);
