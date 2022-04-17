@@ -50,9 +50,8 @@ export class App {
 
         ground.material = terrainMaterial;
 
-        BABYLON.SceneLoader.ImportMeshAsync('', 'https://raw.githubusercontent.com/yashendra-gupta/public/master/assets/3d/models/', 'my-tree.glb').then((myTree) => {
+        BABYLON.SceneLoader.ImportMeshAsync('', 'https://raw.githubusercontent.com/yashendra-gupta/public/master/assets/3d/models/low-poly/character/basic/', 'basic-animated.glb').then((myTree) => {
             myTree.meshes.forEach((mesh) => mesh.renderingGroupId = 1);
-            myTree.meshes[0].scaling = new BABYLON.Vector3(30, 30, 30);
         });
 
         var skybox = BABYLON.Mesh.CreateBox("skyBox", 100, this._scene);
